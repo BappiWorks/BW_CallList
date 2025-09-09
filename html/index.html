@@ -1,0 +1,99 @@
+<!-- Modern iPad-style Dark UI
+Author: BappiWorks (layout refresh by ChatGPT)
+Note: Uses an actual <img> for the iPad frame and <img> icons. Replace images in /images.
+-->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Opkaldsliste</title>
+
+  <!-- Icons / DataTables -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="index.css" />
+
+  <!-- jQuery (FiveM NUI + CDN fallback) -->
+  <script src="nui://game/ui/jquery.js"></script>
+  <script>
+    if (typeof window.jQuery === "undefined") {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"><\/script>');
+    }
+  </script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <audio id="audio_new" src="sounds/definite.ogg"></audio>
+
+  <!-- iPad frame wrapper -->
+  <div id="app-root" class="screen-center">
+    <div class="ipad-shell">
+      <!-- Replace src with your transparent-center iPad PNG/SVG -->
+      <!-- <img class="ipad-frame" src="img/ipad.png" alt="iPad Frame"> -->
+
+      <!-- Display area (screen inside the frame) -->
+      <div class="ipad-display">
+
+        <!-- Status Bar (time, signal, battery) -->
+        <div class="statusbar">
+          <div class="left">
+            <span class="status-time" id="statusTime">09:41</span>
+          </div>
+          <div class="center">
+            <div class="notch-placeholder" aria-hidden="true"></div>
+          </div>
+          <div class="right">
+            <img class="status-icon" src="img/Wifi.png" alt="Wi‑Fi">
+            <img class="status-icon" src="img/Signal.png" alt="Signal">
+            <img class="status-icon" src="img/Battery.png" alt="Batteri">
+          </div>
+        </div>
+
+        <!-- App header -->
+        <header class="app-header">
+          <div class="app-brand">
+            <img class="app-logo" src="img/logo.png" alt="App logo">
+            <h1>Opkaldsliste</h1>
+          </div>
+
+        <div class="app-actions">
+            <!-- Sound toggle -->
+            <button id="toggleSoundBtn" class="btn icon ghost" aria-label="Skift lyd">
+              <i class="fa-regular fa-bell"></i>
+            </button>
+            <!-- Close -->
+            <button id="headerClose" class="btn icon">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content Card -->
+        <main class="app-content">
+          <div class="card glass">
+            <table id="callist" class="display compact stripe hover" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Dato/Tid</th>
+                  <th>Besked</th>
+                  <th>Telefon</th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </main>
+
+        <!-- Home Indicator -->
+        <div class="home-indicator" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+</html>
